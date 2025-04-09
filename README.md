@@ -56,7 +56,50 @@ Para começar a usar o Robot Framework, você precisa instalar o Python e, em se
      ```
 
 4. **Instalar WebDriver**:
-   - Para testes em navegadores, instale o WebDriver adequado (ChromeDriver, GeckoDriver, etc.). 
+   - Para testes em navegadores, instale o WebDriver adequado (ChromeDriver, GeckoDriver, etc.).
+
+## Chrome for Testing availability
+
+[Verificar as versões disponíveis do ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)
+
+
+## Instalando
+   
+```bash
+wget https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.84/linux64/chromedriver-linux64.zip && \
+unzip chromedriver-linux64.zip && \
+cd chromedriver-linux64 && \
+chmod +x chromedriver && \
+sudo cp chromedriver /usr/bin/ && \
+ls /usr/bin/ | grep chromedriver && \
+chromedriver --version
+```
+## Verificar onde está instalado o chromedriver
+
+```bash
+which chromedriver
+/usr/bin/chromedriver
+```
+
+Se o local do seu driver ainda não estiver em um diretório listado, você pode adicionar um novo diretório ao PATH:
+
+```bash
+echo 'export PATH=$PATH:/usr/bin/chromedriver' >> ~/.zshenv
+```
+
+## Atualizar o MYOHZSH
+
+```bash
+source ~/.zshenv
+```
+
+## Instalando o google-chrome
+
+```bash
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+sudo apt install ./google-chrome-stable_current_amd64.deb && \
+google-chrome --version
+```
 
 ---
 
@@ -75,7 +118,7 @@ Exemplo de estrutura básica de um script Robot Framework:
 Library    SeleniumLibrary
 
 *** Variables ***
-${URL}      https://exemplo.com/login
+${URL}      https://front.serverest.dev/login
 ${BROWSER}  chrome
 
 *** Test Cases ***
